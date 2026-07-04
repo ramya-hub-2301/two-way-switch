@@ -1,0 +1,3 @@
+[tool.pytest.ini_options]
+addopts = "--html=reports/report.html --self-contained-html --junitxml=reports/results.xml --cov=app --cov-report=html --cov-report=term-missing"
+testpaths = ["tests"]
