@@ -1,27 +1,30 @@
 import pytest
 from app.twowayswitch import TwoWaySwitch
 
-@pytest.fixture
-def switch():
-    """Provides a fresh TwoWaySwitch instance for every test."""
-    return TwoWaySwitch()
-
 
 class TestTwoWaySwitch:
 
+    @pytest.mark.tcid("TC-001")
+    @pytest.mark.smoke
     def test_initial_state(self, switch):
         assert switch.switch1 == 0
         assert switch.switch2 == 0
         assert switch.light_on is True
 
+    @pytest.mark.tcid("TC-002")
+    @pytest.mark.smoke
     def test_toggle_switch1_changes_light(self, switch):
         switch.toggle_switch1()
         assert switch.light_on is False
 
+    @pytest.mark.tcid("TC-003")
+    @pytest.mark.smoke
     def test_toggle_switch2_changes_light(self, switch):
         switch.toggle_switch2()
         assert switch.light_on is False
 
+    @pytest.mark.tcid("TC-004")
+    @pytest.mark.smoke
     @pytest.mark.parametrize("s1,s2,expected", [
         (0, 0, True),
         (1, 1, True),
